@@ -198,3 +198,75 @@ function animateConfetti() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 }
+// ===== OPENING SCREEN UNLOCK TIME =====
+
+// Yaha exact date aur time set karo
+const websiteUnlockTime =
+  new Date("2026-09-15T00:00:00").getTime();
+
+const openingCountdown =
+  document.getElementById("openingCountdown");
+
+const startBtn =
+  document.getElementById("startBtn");
+
+function updateOpeningCountdown() {
+
+  const now = new Date().getTime();
+
+  const distance = websiteUnlockTime - now;
+
+  // Countdown complete
+  if (distance <= 0) {
+
+    document.getElementById("openDays").textContent = "00";
+    document.getElementById("openHours").textContent = "00";
+    document.getElementById("openMinutes").textContent = "00";
+    document.getElementById("openSeconds").textContent = "00";
+
+    openingCountdown.innerHTML = `
+      <p class="ready-message">
+        🎉 The Surprise Is Ready!
+      </p>
+    `;
+
+    startBtn.classList.remove("hidden");
+
+    clearInterval(openingTimer);
+
+    return;
+  }
+
+  const days = Math.floor(
+    distance / (1000 * 60 * 60 * 24)
+  );
+
+  const hours = Math.floor(
+    (distance / (1000 * 60 * 60)) % 24
+  );
+
+  const minutes = Math.floor(
+    (distance / (1000 * 60)) % 60
+  );
+
+  const seconds = Math.floor(
+    (distance / 1000) % 60
+  );
+
+  document.getElementById("openDays").textContent =
+    String(days).padStart(2, "0");
+
+  document.getElementById("openHours").textContent =
+    String(hours).padStart(2, "0");
+
+  document.getElementById("openMinutes").textContent =
+    String(minutes).padStart(2, "0");
+
+  document.getElementById("openSeconds").textContent =
+    String(seconds).padStart(2, "0");
+}
+
+const openingTimer =
+  setInterval(updateOpeningCountdown, 1000);
+
+updateOpeningCountdown();
