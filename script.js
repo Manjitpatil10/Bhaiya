@@ -270,3 +270,75 @@ const openingTimer =
   setInterval(updateOpeningCountdown, 1000);
 
 updateOpeningCountdown();
+.opening-countdown {
+  margin: 28px 0 20px;
+}
+
+.unlock-text {
+  color: #b8c0d0;
+  margin-bottom: 18px;
+}
+
+.opening-timer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.opening-timer div {
+  padding: 14px 8px;
+  border-radius: 15px;
+
+  background: rgba(255,255,255,0.06);
+
+  border: 1px solid rgba(241,201,107,0.22);
+}
+
+.opening-timer strong {
+  display: block;
+
+  font-size: 28px;
+
+  color: #ffe6a6;
+}
+
+.opening-timer span {
+  font-size: 10px;
+
+  color: #9da5b5;
+}
+
+.locked-text {
+  margin-top: 18px;
+
+  color: #f1c96b;
+
+  font-size: 14px;
+}
+
+.ready-message {
+  font-size: 21px;
+
+  color: #ffe6a6;
+
+  font-weight: 600;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 480px) {
+
+  .opening-timer {
+    gap: 6px;
+  }
+
+  .opening-timer strong {
+    font-size: 22px;
+  }
+
+  .opening-timer span {
+    font-size: 9px;
+  }
+}
